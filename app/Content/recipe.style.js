@@ -1,8 +1,9 @@
 import{ StyleSheet } from "react-native";
 
 
-export const Aboutstyle = StyleSheet.create({
+export const Recipestyle = StyleSheet.create({
     content: {
+      
       padding: 0,
         flex: 1,
         backgroundColor: "#354259",
@@ -17,15 +18,17 @@ export const Aboutstyle = StyleSheet.create({
           flex: .8,
           
         },
-        card:{
-          flexDirection:"row"
-           },
       image: {
         flex: 1,
-        justifyContent: "center",
-        width: 340, height: 360
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 300, height: 200
       },
     view: {
+      flexDirection: 'column',
+justifyContent: 'center',
+alignItems: 'center',
+height: '100%',
         width: "100%"
     },
     cardTitle: {
@@ -40,11 +43,10 @@ export const Aboutstyle = StyleSheet.create({
       textAlign: "center",
       padding:10,
       fontSize: 20,
-      
     },
         Text: {
           marginTop: 16,
-          padding: 8,
+          paddingVertical: 8,
           borderWidth: 4,
           borderColor: "#20232a",
           borderRadius: 1,
@@ -57,16 +59,47 @@ export const Aboutstyle = StyleSheet.create({
       button:{
         
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        
+        
+        marginRight: 5,
+        
       },
+      card1:{
+       
+        margin:20,
+        backgroundColor: "#FF8D29",
+        width: 300
+      },
+      cardcover:{
+        
+      },
+      card:{
+     flexDirection:"row"
+      },
+
+      card2:{
+       
+        margin:10,
+        backgroundColor: "#FF8D29",
+      },
+      Paragraph:{
+        width: 500
+      },
+
     cardButton: {
-        margin: 1,
-      
+      position: 'absolute',
+      bottom:0,
+      left:0,
+        
     },
-    card1:{
-      padding: 0,
-      margin:15,
+    cardButton1: {
       
-    },
+      margin: 1,
+      backgroundColor: "#F6FBF4",
+     
+      bottom:0,
+  }
+    
     
 })

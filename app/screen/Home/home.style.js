@@ -38,7 +38,7 @@ height: '100%',
     titleText: {
       marginBottom:15,
       borderRadius: 0,
-      backgroundColor: "#FFFFFF",
+      backgroundColor: "#FF8D29",
       color: "#242F9B",
       textAlign: "center",
       padding:10,

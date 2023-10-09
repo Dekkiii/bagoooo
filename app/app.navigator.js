@@ -19,6 +19,12 @@ import { Food9 } from './screen/Recipe/recipescreen';
 import { Food10 } from './screen/Recipe/recipescreen';
 import { Bmiscreen } from './screen/BMI/bmiscreen';
 import { Exerscreen } from './screen/Exercise/exerscreen';
+import { AuthProvider } from '../Context/authContext';
+import { Registerscreen } from './screen/Register/registerscreen';
+import { RecipeProvider } from '../Context/recipeContext';
+import { Informationscreen } from './screen/information';
+import { RecipeDetails } from './screen/Recipe/recipedetails';
+
 
 
 
@@ -26,32 +32,27 @@ const Stack = createStackNavigator();
 
 export const AppNavigator = ({navigation}) => {
 return (
-    <NavigationContainer  initialRouteName='Loginscreen'> 
-        <Stack.Navigator headerMode ="none">
-            <Stack.Screen name ='Login' component={Loginscreen}/>
-            <Stack.Screen name ='Home' component={Homescreen}/>
-            <Stack.Screen name ='About' component={Aboutscreen}/>
-            <Stack.Screen name ='Contact' component={Contactscreen}/>
-            <Stack.Screen name ='Menu' component={Menuscreen}/>
-            <Stack.Screen name ='Recipescreen' component={Recipescreen}/>
-            <Stack.Screen name ='Gymsc' component={Exerscreen}/>
-            <Stack.Screen name ='Recipe1' component={Food1}/>
-            <Stack.Screen name ='BMI' component={Bmiscreen}/>
-            <Stack.Screen name ='Recipe2' component={Food2}/>
-            <Stack.Screen name ='Recipe3' component={Food3}/>
-            <Stack.Screen name ='Recipe4' component={Food4}/>
-            <Stack.Screen name ='Recipe5' component={Food5}/>
-            <Stack.Screen name ='Recipe6' component={Food6}/>
-            <Stack.Screen name ='Recipe7' component={Food7}/>
-            <Stack.Screen name ='Recipe8' component={Food8}/>
-            <Stack.Screen name ='Recipe9' component={Food9}/>
-            <Stack.Screen name ='Recipe10' component={Food10}/>
-            
-            
+    <NavigationContainer  initialRouteName='Home'> 
+    <AuthProvider>
+        <RecipeProvider>
+        <Stack.Navigator>
+        <Stack.Screen options={{headerTitle: 'Test', headerShown: false}} name="Login" component={Loginscreen} />
+        <Stack.Screen options={{headerTitle: 'Test', headerShown: false}} name="Register" component={Registerscreen} />
+            <Stack.Screen options={{headerTitle: 'Test', headerShown: false}} name ='Information' component={Informationscreen}/>
+            <Stack.Screen options={{headerTitle: 'Test', headerShown: false}} name ='RecipeDetails' component={RecipeDetails}/>
+            <Stack.Screen options={{headerTitle: 'Test', headerShown: false}} name ='Home' component={Homescreen}/>
+            <Stack.Screen options={{headerTitle: 'Test', headerShown: false}}name ='About' component={Aboutscreen}/>
+            <Stack.Screen options={{headerTitle: 'Test', headerShown: false}}name ='Contact' component={Contactscreen}/>
+            <Stack.Screen options={{headerTitle: 'Test', headerShown: false}}name ='Menu' component={Menuscreen}/>
+            <Stack.Screen options={{headerTitle: 'Test', headerShown: false}}name ='Recipescreen' component={Recipescreen}/>
+            <Stack.Screen options={{headerTitle: 'Test', headerShown: false}}name ='Gymsc' component={Exerscreen}/>
+<Stack.Screen options={{headerTitle: 'Test', headerShown: false}}name ='BMI' component={Bmiscreen}/>
             
             
 
         </Stack.Navigator>
+        </RecipeProvider>
+        </AuthProvider>
     </NavigationContainer>
     )
    }

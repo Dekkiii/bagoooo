@@ -9,7 +9,6 @@ export const Contactscreen = ({navigation}) => {
     return(
 <SafeAreaView style={Contactstyle.content}>
     <View>
-    <Text style={Contactstyle.titleText}>{"Contact"}</Text>
     <Card > 
        <Card.Actions  style={Contactstyle.card}>
        <Image style={{width:35,height:35,marginRight: 5}}  source={require('./asset/blacklogo.png')}></Image>

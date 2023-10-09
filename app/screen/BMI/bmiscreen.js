@@ -29,7 +29,6 @@ export const Bmiscreen = ({navigation}) => {
     return(
 <SafeAreaView style={Aboutstyle.content}>
     <View>
-    
     <Card >
        
     

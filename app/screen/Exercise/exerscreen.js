@@ -12,7 +12,7 @@ export const Exerscreen = ({navigation}) => {
     <Card >
        <Card.Actions  style={Exerstyle.card}>
        <Image style={{width:35,height:35,marginRight: 5}}  source={require('./asset/blacklogo.png')}></Image>
-       <Button onPress={() => navigation.navigate('Menu')}>Back</Button> 
+       <Button onPress={() => navigation.navigate('Menu')}>Back</Button>     
     </Card.Actions>
     </Card>
    

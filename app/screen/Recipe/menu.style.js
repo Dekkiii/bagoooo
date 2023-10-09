@@ -66,12 +66,17 @@ export const Menustyle = StyleSheet.create({
       },
       card1:{
         padding: 0,
-        margin:20
+        margin:20,
       },
       card2:{
         padding: 0,
         margin:20,
         marginBottom:150
+      },
+      card3:{
+        padding: 0,
+        margin:20,
+        marginBottom:100
       },
     cardButton: {
         margin: 1,

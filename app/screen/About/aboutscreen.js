@@ -9,7 +9,6 @@ export const Aboutscreen = ({navigation}) => {
     return(
 <SafeAreaView style={Aboutstyle.content}>
     <View>
-    <Text style={Aboutstyle.titleText}>{"About Page"}</Text>
     <Card >
        
         

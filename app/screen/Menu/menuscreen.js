@@ -4,12 +4,12 @@ import { SafeAreaView,Text,View,ImageBackground,Image,ScrollView} from 'react-na
 import { Card, TextInput,Button,Title,Paragraph} from 'react-native-paper';
 import { Menustyle } from './menu.style';
 
-
-export const Menuscreen = ({navigation}) => {
+export const Menuscreen = ({navigation, route }) => {
+  
     return(
 <SafeAreaView style={Menustyle.content}>
     <View>
-    <Text style={Menustyle.titleText}>{"Menu"}</Text>
+
     <Card >
        <Card.Actions  style={Menustyle.card}>
        <Image style={{width:35,height:35,marginRight: 5}}  source={require('./asset/blacklogo.png')}></Image>

@@ -65,7 +65,6 @@ export const Contactstyle = StyleSheet.create({
     card1:{
       padding: 0,
       margin:15,
-      backgroundColor: "#FFE3A9",
     },
     card:{
       padding: 5,
