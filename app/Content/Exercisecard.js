@@ -5,10 +5,12 @@ import { useNavigation } from "@react-navigation/native";
 import { RecipeContext } from "../../Context/recipeContext";
 import { Menustyle } from "../screen/Recipe/menu.style";
 import { Card, TextInput,Button,Title,Paragraph} from 'react-native-paper';
-const RecipeCard = ({recipeinformations, recipeId}) => {
-    const [recipes] = useContext(RecipeContext)
+import Video from 'react-native-video';
+import YoutubeIframe from 'react-native-youtube-iframe';
+
+const ExerciseCard = ({exerciseinformations, exerciseId}) => {
     const navigation = useNavigation();
-    const selectedrecipeinformation = recipeinformations
+    const selectedExerciseInformation = exerciseinformations
 
   //handle delete prompt
   return (
@@ -17,7 +19,7 @@ const RecipeCard = ({recipeinformations, recipeId}) => {
     <Card >
        <Card.Actions  style={Menustyle.card}>
        <Image style={{width:35,height:35,marginRight: 5}}  source={require('./asset/blacklogo.png')}></Image>
-       <Button onPress={() => navigation.navigate('Recipescreen')}>Back</Button>     
+       <Button onPress={() => navigation.navigate('Exercisescreen')}>Back</Button>     
        </Card.Actions>
        </Card>
        <ScrollView>
@@ -25,20 +27,24 @@ const RecipeCard = ({recipeinformations, recipeId}) => {
        <Card style={Menustyle.card3}>
        <Card.Content>
        <ScrollView>
-    {selectedrecipeinformation ? ( // Check if selectedrecipeinformation exists
+    {selectedExerciseInformation ? ( // Check if selectedrecipeinformation exists
       <>
-        <Title style={{ textAlign: 'center' }}>{selectedrecipeinformation.recipename}</Title>
-        <Title style={{ textAlign: 'center' }}>Ingredients</Title>
-        <Paragraph> {selectedrecipeinformation.ingredients}</Paragraph>
+       <YoutubeIframe
+       height={300}
+videoId={selectedExerciseInformation.videolink}
+
+                    
+                      // Set to false to auto-play the video
+                      />
+    
+        <Title style={{ textAlign: 'center' }}>{selectedExerciseInformation.exercise}</Title>
+        <Title style={{ textAlign: 'center' }}>Target muscles</Title>
         <Title style={{ textAlign: 'center' }}>Steps</Title>
-        <Paragraph> {selectedrecipeinformation.steps}</Paragraph>
-        <Title style={{ textAlign: 'center' }}>Nutrition</Title>
-        <Paragraph> {selectedrecipeinformation.nutrition}</Paragraph>
-        <Paragraph> {recipeId}</Paragraph>
+        <Paragraph> {exerciseId}</Paragraph>
       
       </>
     ) : (
-      <Text>Recipe information not found.</Text>
+      <Text>Exercise information not found.</Text>
     )}
   </ScrollView>
  </Card.Content>
@@ -53,4 +59,4 @@ const RecipeCard = ({recipeinformations, recipeId}) => {
   );
 };
 
-export default RecipeCard;
+export default ExerciseCard;

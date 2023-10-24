@@ -3,17 +3,16 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { TouchableOpacity,SafeAreaView,Text,View,ImageBackground,Image,ScrollView} from 'react-native';
 import { Card, TextInput,Button,Title,Paragraph} from 'react-native-paper';
-import { Menustyle } from './menu.style';
-import { Aboutstyle } from './about.style';
+import { Menustyle } from '../Menu/menu.style';
 import { RecipeContext } from '../../../Context/recipeContext';
 import { AuthContext } from '../../../Context/authContext';
-import { RecipeDetails } from './recipedetails';
+import { ExerciseContext } from '../../../Context/exerciseContext';
 
 
 
-export const Recipescreen = ({navigation, route}) => {
+export const Exercisescreen = ({navigation, route}) => {
     const [state] = useContext(AuthContext)
-    const [recipes] = useContext(RecipeContext)
+    const [exercises] = useContext(ExerciseContext)
     
     return(
 <SafeAreaView style={Menustyle.content}>
@@ -33,17 +32,27 @@ export const Recipescreen = ({navigation, route}) => {
    
     </View> 
     <ScrollView>
-      {recipes.map((recipe) => (
-        <Card TouchableOpacity
-        key={recipe.id}
-        onPress={() => navigation.navigate('RecipeDetails',{recipeId : recipe.id})} style={Menustyle.card1}
-        >
-            
-              <Card.Cover style={Menustyle.cardcover} resizeMode={`cover`}  source={{ uri: recipe.image }}/>
-              <Card.Title title = {recipe.recipename}></Card.Title>
-        </Card>
-      ))}
-      
+    {exercises.length > 0 ? (
+    exercises.map((exercise) => (
+      <Card
+        TouchableOpacity
+        key={exercise.id}
+        onPress={() =>
+          navigation.navigate('ExerciseDetails', { exerciseId: exercise.id })
+        }
+        style={Menustyle.card1}
+      >
+        <Card.Cover
+          style={Menustyle.cardcover}
+          resizeMode={`cover`}
+          source={{ uri: exercise.image }}
+        />
+        <Card.Title title={exercise.exercise} />
+      </Card>
+    ))
+  ) : (
+    <Text>Exercise information not found.</Text>
+  )}
     </ScrollView>
     
 </SafeAreaView>

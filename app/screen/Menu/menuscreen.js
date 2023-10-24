@@ -51,7 +51,7 @@ export const Menuscreen = ({navigation, route }) => {
       <Paragraph>Workout guides for all</Paragraph>
     </Card.Content>
     <Card.Actions>
-      <Button>Go</Button>
+    <Button onPress={() => navigation.navigate('Exercisescreen')}>Go</Button>
     </Card.Actions>
     </Card>
     

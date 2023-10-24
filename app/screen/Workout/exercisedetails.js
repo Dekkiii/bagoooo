@@ -9,22 +9,21 @@ import {
 import { AuthContext } from "../../../Context/authContext";
 import axios from "axios";
   import { RecipeContext } from "../../../Context/recipeContext";
-import RecipeCard from "../../Content/Recipecard";
-import { Aboutstyle } from "./about.style";
+import ExerciseCard from "../../Content/Exercisecard"
+import { Aboutstyle } from "../Recipe/about.style";
 
-export const RecipeDetails = ({navigation, route}) => {
-    const [recipes] = useContext(RecipeContext);
+export const ExerciseDetails = ({navigation, route}) => {
     const [loading, setLoading]= useState(false);
-    const { recipeId } = route.params;
-    const [selectedrecipe, setSelectedRecipes] = useState([]);
-    const selectedRecipess = selectedrecipe.find((recipeinformations) => recipeinformations.id === recipeId);
+    const { exerciseId } = route.params;
+    const [selectedexercise, setSelectedExercise] = useState([]);
+    const selectedExercise = selectedexercise.find((exerciseinformations) => exerciseinformations.id === exerciseId);
    
-    const getSelectedRecipe = async () => {
+    const getSelectedExercise = async () => {
         try {
           setLoading(true);
-          const { data } = await axios.get('http://10.0.2.2:3000/recipesinformation');
+          const { data } = await axios.get('http://10.0.2.2:3000/exerciseinformation');
           setLoading(false);
-          setSelectedRecipes(data?.recipeinformations);
+          setSelectedExercise(data?.exerciseinformations);
         } catch (error) {
           setLoading(false);
           console.log(error);
@@ -34,12 +33,12 @@ export const RecipeDetails = ({navigation, route}) => {
       
       // inintal  posts
       useEffect(() => {
-        getSelectedRecipe();
+        getSelectedExercise();
       }, []);
     //global state
     return (
         <View style={Aboutstyle.content}>
-        <RecipeCard recipeId = {recipeId} recipeinformations = {selectedRecipess} />
+        <ExerciseCard exerciseId = {exerciseId} exerciseinformations = {selectedExercise} />
       <View style={{ backgroundColor: "#ffffff" }}>
       </View>
     </View>

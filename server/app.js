@@ -1,3 +1,4 @@
+
 const JWT = require('jsonwebtoken')
 const express = require('express');
 const app = express();
@@ -152,6 +153,29 @@ app.get('/recipes', async (req, res) => {
    return res.status(200).send({ recipes });
   } catch (error) {
     console.error('Error fetching recipes:', error);
+    res.status(500).send({ error: 'Internal server error' });
+  }
+});
+
+app.get('/exerciseinformation', async (req, res) => {
+  try {
+    const exerciseinformations = await prisma.exerciseinformation.findMany(); // Replace 'recipe' with your actual Prisma model name
+
+   return res.status(200).send({exerciseinformations});
+  } catch (error) {
+    console.error('Error fetching recipes:', error);
+    res.status(500).send({ error: 'Internal server error' });
+  }
+});
+
+
+app.get('/exercises', async (req, res) => {
+  try {
+    const exercises = await prisma.exercises.findMany(); // Replace 'recipe' with your actual Prisma model name
+
+   return res.status(200).send({ exercises });
+  } catch (error) {
+    console.error('Error fetching exercises:', error);
     res.status(500).send({ error: 'Internal server error' });
   }
 });

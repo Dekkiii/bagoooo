@@ -24,6 +24,9 @@ import { Registerscreen } from './screen/Register/registerscreen';
 import { RecipeProvider } from '../Context/recipeContext';
 import { Informationscreen } from './screen/information';
 import { RecipeDetails } from './screen/Recipe/recipedetails';
+import { ExerciseDetails } from './screen/Workout/exercisedetails';
+import { ExerciseProvider } from '../Context/exerciseContext';
+import { Exercisescreen } from './screen/Workout/exercisescreen';
 
 
 
@@ -35,22 +38,26 @@ return (
     <NavigationContainer  initialRouteName='Home'> 
     <AuthProvider>
         <RecipeProvider>
+            <ExerciseProvider>
         <Stack.Navigator>
         <Stack.Screen options={{headerTitle: 'Test', headerShown: false}} name="Login" component={Loginscreen} />
         <Stack.Screen options={{headerTitle: 'Test', headerShown: false}} name="Register" component={Registerscreen} />
             <Stack.Screen options={{headerTitle: 'Test', headerShown: false}} name ='Information' component={Informationscreen}/>
             <Stack.Screen options={{headerTitle: 'Test', headerShown: false}} name ='RecipeDetails' component={RecipeDetails}/>
+            <Stack.Screen options={{headerTitle: 'Test', headerShown: false}} name ='ExerciseDetails' component={ExerciseDetails}/>
             <Stack.Screen options={{headerTitle: 'Test', headerShown: false}} name ='Home' component={Homescreen}/>
             <Stack.Screen options={{headerTitle: 'Test', headerShown: false}}name ='About' component={Aboutscreen}/>
             <Stack.Screen options={{headerTitle: 'Test', headerShown: false}}name ='Contact' component={Contactscreen}/>
             <Stack.Screen options={{headerTitle: 'Test', headerShown: false}}name ='Menu' component={Menuscreen}/>
             <Stack.Screen options={{headerTitle: 'Test', headerShown: false}}name ='Recipescreen' component={Recipescreen}/>
+            <Stack.Screen options={{headerTitle: 'Test', headerShown: false}}name ='Exercisescreen' component={Exercisescreen}/>
             <Stack.Screen options={{headerTitle: 'Test', headerShown: false}}name ='Gymsc' component={Exerscreen}/>
 <Stack.Screen options={{headerTitle: 'Test', headerShown: false}}name ='BMI' component={Bmiscreen}/>
             
             
 
         </Stack.Navigator>
+        </ExerciseProvider>
         </RecipeProvider>
         </AuthProvider>
     </NavigationContainer>
