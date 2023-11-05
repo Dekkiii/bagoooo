@@ -35,11 +35,11 @@ export const Menuscreen = ({navigation, route }) => {
     <Card style={Menustyle.card1}>
     <Card.Cover style={Menustyle.cardcover} resizeMode={`cover`} source={require('./asset/COVER3.png')}/>
     <Card.Content>
-      <Title>Gym Equipments</Title>
-      <Paragraph>Different Uses of Gym Equipments</Paragraph>
+      <Title>Pose Detection</Title>
+      <Paragraph>Pose Detection for different exercises</Paragraph>
     </Card.Content>
     <Card.Actions>
-    <Button onPress={() => navigation.navigate('Gymsc')}>Go</Button>
+    <Button onPress={() => navigation.navigate('Sensorscreen')}>Go</Button>
     </Card.Actions>
     </Card>
 
