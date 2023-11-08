@@ -21,7 +21,7 @@ export const ExerciseDetails = ({navigation, route}) => {
     const getSelectedExercise = async () => {
         try {
           setLoading(true);
-          const { data } = await axios.get('http://10.0.2.2:3000/exerciseinformation');
+          const { data } = await axios.get('https://react-native-server-5j9t.onrender.com/exerciseinformation');
           setLoading(false);
           setSelectedExercise(data?.exerciseinformations);
         } catch (error) {

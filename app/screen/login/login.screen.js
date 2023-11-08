@@ -27,7 +27,7 @@ export const Loginscreen = ({navigation}) => {
             return;
           }
           setLoading(false);
-          const {data} = await axios.post("http:10.0.2.2:3000/login", {username, password});
+          const {data} = await axios.post("https://react-native-server-5j9t.onrender.com/login", {username, password});
             if (data.success === true) {
               // Successful login
               

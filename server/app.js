@@ -22,7 +22,7 @@ const router = express.Router();
 
 // MongoDB connection
 
- const mongURI = "mongodb+srv://mbaberbano:123123123Dek@cbs.2zjmxrg.mongodb.net/test" 
+const mongURI = "mongodb+srv://mbaberbano:123123123Dek@cbs.2zjmxrg.mongodb.net/test" 
  
  mongoose.connect(mongURI, {
     useNewUrlParser : true
@@ -148,7 +148,7 @@ app.get('/recipesinformation', async (req, res) => {
 
 app.get('/recipes', async (req, res) => {
   try {
-    const recipes = await prisma.recipes.findMany(); // Replace 'recipe' with your actual Prisma model name
+    const recipes = await prisma.recipes.findMany(); 
 
    return res.status(200).send({ recipes });
   } catch (error) {
@@ -159,7 +159,7 @@ app.get('/recipes', async (req, res) => {
 
 app.get('/exerciseinformation', async (req, res) => {
   try {
-    const exerciseinformations = await prisma.exerciseinformation.findMany(); // Replace 'recipe' with your actual Prisma model name
+    const exerciseinformations = await prisma.exerciseinformation.findMany(); 
 
    return res.status(200).send({exerciseinformations});
   } catch (error) {
@@ -171,7 +171,7 @@ app.get('/exerciseinformation', async (req, res) => {
 
 app.get('/exercises', async (req, res) => {
   try {
-    const exercises = await prisma.exercises.findMany(); // Replace 'recipe' with your actual Prisma model name
+    const exercises = await prisma.exercises.findMany(); 
 
    return res.status(200).send({ exercises });
   } catch (error) {

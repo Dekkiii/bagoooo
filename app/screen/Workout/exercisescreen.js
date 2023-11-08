@@ -31,28 +31,19 @@ export const Exercisescreen = ({navigation, route}) => {
    
    
     </View> 
+
     <ScrollView>
-    {exercises.length > 0 ? (
-    exercises.map((exercise) => (
-      <Card
-        TouchableOpacity
+      {exercises.map((exercise) => (
+        <Card TouchableOpacity
         key={exercise.id}
-        onPress={() =>
-          navigation.navigate('ExerciseDetails', { exerciseId: exercise.id })
-        }
-        style={Menustyle.card1}
-      >
-        <Card.Cover
-          style={Menustyle.cardcover}
-          resizeMode={`cover`}
-          source={{ uri: exercise.image }}
-        />
-        <Card.Title title={exercise.exercise} />
-      </Card>
-    ))
-  ) : (
-    <Text>Exercise information not found.</Text>
-  )}
+        onPress={() => navigation.navigate('ExerciseDetails',{exerciseId : exercise.id})} style={Menustyle.card1}
+        >
+            
+              <Card.Cover style={Menustyle.cardcover} resizeMode={`cover`}  source={{ uri: exercise.image }}/>
+              <Card.Title title = {exercise.exercise}></Card.Title>
+        </Card>
+      ))}
+      
     </ScrollView>
     
 </SafeAreaView>
