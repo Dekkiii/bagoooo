@@ -46,4 +46,5 @@ model Exerciseinformation {
    id             String   @id @default(auto()) @map("_id") @db.ObjectId 
   exercise      String
   videolink     String
+  description   String
 }

@@ -1,4 +1,3 @@
-
 const JWT = require('jsonwebtoken')
 const express = require('express');
 const app = express();

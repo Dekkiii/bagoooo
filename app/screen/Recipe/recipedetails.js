@@ -22,7 +22,7 @@ export const RecipeDetails = ({navigation, route}) => {
     const getSelectedRecipe = async () => {
         try {
           setLoading(true);
-          const { data } = await axios.get('https://react-native-server-5j9t.onrender.com/recipesinformation');
+          const { data } = await axios.get('http:10.0.2.2:3000/recipesinformation');
           setLoading(false);
           setSelectedRecipes(data?.recipeinformations);
         } catch (error) {

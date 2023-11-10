@@ -16,7 +16,7 @@ const RecipeProvider = ({ children }) => {
   const getAllRecipe = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get('https://react-native-server-5j9t.onrender.com/recipes');
+      const { data } = await axios.get('http:10.0.2.2:3000/recipes');
       setLoading(false);
       setRecipes(data.recipes);
     } catch (error) {
