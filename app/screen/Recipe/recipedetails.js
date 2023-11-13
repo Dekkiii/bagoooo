@@ -17,12 +17,14 @@ export const RecipeDetails = ({navigation, route}) => {
     const [loading, setLoading]= useState(false);
     const { recipeId } = route.params;
     const [selectedrecipe, setSelectedRecipes] = useState([]);
+    const [selectednutrition, setSelectedNutritions] = useState([]);
     const selectedRecipess = selectedrecipe.find((recipeinformations) => recipeinformations.id === recipeId);
+    const recipenutritions = selectednutrition.find((selectednutritions) => selectednutritions.id === recipeId);
    
     const getSelectedRecipe = async () => {
         try {
           setLoading(true);
-          const { data } = await axios.get('http:10.0.2.2:3000/recipesinformation');
+          const { data } = await axios.get("https://serverrrr-3kbl.onrender.com/recipesinformation");
           setLoading(false);
           setSelectedRecipes(data?.recipeinformations);
         } catch (error) {
@@ -36,10 +38,28 @@ export const RecipeDetails = ({navigation, route}) => {
       useEffect(() => {
         getSelectedRecipe();
       }, []);
+
+      const getSelectedNutrition = async () => {
+        try {
+          setLoading(true);
+          const { data } = await axios.get("https://serverrrr-3kbl.onrender.com/nutrition");
+          setLoading(false);
+          setSelectedNutritions(data?.nutritions);
+        } catch (error) {
+          setLoading(false);
+          console.log(error);
+          
+        }
+      };
+      
+      // inintal  posts
+      useEffect(() => {
+        getSelectedNutrition();
+      }, []);
     //global state
     return (
         <View style={Aboutstyle.content}>
-        <RecipeCard recipeId = {recipeId} recipeinformations = {selectedRecipess} />
+        <RecipeCard recipeId = {recipeId} nutrition = {recipenutritions} recipeinformations = {selectedRecipess} />
       <View style={{ backgroundColor: "#ffffff" }}>
       </View>
     </View>

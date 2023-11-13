@@ -1,4 +1,4 @@
-import { Alert, SafeAreaView, View} from 'react-native';
+import { Alert, SafeAreaView, View, TouchableOpacity } from 'react-native';
 import { Button, Card, TextInput } from 'react-native-paper';
 import { loginStyle } from './login.style';
 import { NavigationContainer } from '@react-navigation/native';
@@ -6,6 +6,7 @@ import { AuthContext } from '../../../Context/authContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useContext, useEffect, useState } from 'react';
 import axios from "axios";
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
 export const Loginscreen = ({navigation}) => {  
@@ -14,8 +15,9 @@ export const Loginscreen = ({navigation}) => {
         const [password, setPassword] = useState('');
         const [firstname, setFirstName] = useState('');
         const [loading, setLoading] = useState('false');
+        const [showPassword, setShowPassword] = useState(false);
         const handleregister = async () => {
-            const response = await axios.post('http:10.0.2.2:3000/register')
+            const response = await axios.post('https://serverrrr-3kbl.onrender.com/register')
         }
         const handleLogin = async () => {
           
@@ -27,7 +29,7 @@ export const Loginscreen = ({navigation}) => {
             return;
           }
           setLoading(false);
-          const {data} = await axios.post('http:10.0.2.2:3000/login', {username, password});
+          const {data} = await axios.post("https://serverrrr-3kbl.onrender.com/login", {username, password});
             if (data.success === true) {
               // Successful login
               
@@ -52,51 +54,63 @@ export const Loginscreen = ({navigation}) => {
             console.log ("Local Storage ==>", data);
         }
         getLocalStorageData();
-   return (
-    
+  
        
-    <SafeAreaView style={loginStyle.content}>
-    <View>
-      <Card>
-        <Card.Title title="Login" titleStyle={loginStyle.cardTitle} />
-        <Card.Content>
-        <TextInput
-        placeholder="Username"
-        value={username}
-        onChangeText={(text) => setUsername(text)}
-      />
-      <TextInput
-        placeholder="Password"
-        secureTextEntry
-        value={password}
-        onChangeText={(text) => setPassword(text)}
-      />
-          <Button
-            uppercase={false}
-            style={loginStyle.cardButton}
-            onPress={() => navigation.navigate('ForgotPassword')} // Navigate to the "ForgotPassword" screen
-          >
-            Forgot email/password
-          </Button>
-          <Button
-            mode="contained"
-            style={loginStyle.cardButton}
-            onPress={handleLogin}
-          >
-            Login
-          </Button>
-          <Button
-            style={loginStyle.cardButton}
-            onPress={()=> navigation.navigate('Register')}
-                
-          >
-            Register
-          </Button>
-        </Card.Content>
-      </Card>
-    </View>
-  </SafeAreaView>
-   );
-    
-   }
-
+  return (
+    <SafeAreaView style={loginStyle.container}>
+      <View style={loginStyle.content}>
+        <Card style={loginStyle.card}>
+          <Card.Title title="Gym App Login" titleStyle={loginStyle.cardTitle} />
+          <Card.Content>
+            <View style={loginStyle.inputContainer}>
+              <Icon name="person" size={20} color="#007BFF" style={loginStyle.icon} />
+              <TextInput
+                style={loginStyle.input}
+                placeholder="Username"
+                value={username}
+                onChangeText={(text) => setUsername(text)}
+              />
+            </View>
+            <View style={loginStyle.inputContainer}>
+              <Icon name="lock" size={20} color="#007BFF" style={loginStyle.icon} />
+              <TextInput
+                style={loginStyle.input}
+                placeholder="Password"
+                secureTextEntry={!showPassword}
+                value={password}
+                onChangeText={(text) => setPassword(text)}
+              />
+              <TouchableOpacity
+                style={loginStyle.iconButton}
+                onPress={() => setShowPassword(!showPassword)}
+              >
+                <Icon
+                  name={showPassword ? 'visibility-off' : 'visibility'}
+                  size={20}
+                  color="#007BFF"
+                  style={{ backgroundColor: showPassword ? 'transparent' : '#fff' }}
+                />
+              </TouchableOpacity>
+            </View>
+            <Button
+              uppercase={false}
+              style={loginStyle.forgotButton}
+              onPress={() => navigation.navigate('ForgotPassword')}
+            >
+              Forgot Email/Password
+            </Button>
+            <Button mode="contained" style={loginStyle.loginButton} onPress={handleLogin}>
+              Login
+            </Button>
+            <Button
+              style={loginStyle.registerButton}
+              onPress={() => navigation.navigate('Register')}
+            >
+              Register
+            </Button>
+          </Card.Content>
+        </Card>
+      </View>
+    </SafeAreaView>
+  );
+};

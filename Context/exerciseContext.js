@@ -16,7 +16,7 @@ const ExerciseProvider = ({ children }) => {
   const getAllExercise = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get('http:10.0.2.2:3000/exercises');
+      const { data } = await axios.get("https://serverrrr-3kbl.onrender.com/exercises");
       setLoading(false);
       setExercises(data.exercises);
     } catch (error) {

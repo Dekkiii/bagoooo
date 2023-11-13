@@ -21,7 +21,7 @@ export const ExerciseDetails = ({navigation, route}) => {
     const getSelectedExercise = async () => {
         try {
           setLoading(true);
-          const { data } = await axios.get('http://10.0.2.2/exerciseinformation');
+          const { data } = await axios.get("https://serverrrr-3kbl.onrender.com/exerciseinformation");
           setLoading(false);
           setSelectedExercise(data?.exerciseinformations);
         } catch (error) {
@@ -35,6 +35,8 @@ export const ExerciseDetails = ({navigation, route}) => {
       useEffect(() => {
         getSelectedExercise();
       }, []);
+
+      
     //global state
     return (
         <View style={Aboutstyle.content}>

@@ -8,7 +8,7 @@ export const Informationscreen = ({ navigation }) => {
   // Global state
   const [exercise] = useContext(ExerciseContext);
   const [recipeinformation] = useContext(RecipeContext)
-
+  
   // Check if recipes is an array and contains at least one item
   if (Array.isArray(exercise) && exercise.length > 0) {
     // Access the first recipe object in the array (you can choose a specific one)

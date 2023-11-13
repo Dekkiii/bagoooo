@@ -27,6 +27,8 @@ import { RecipeDetails } from './screen/Recipe/recipedetails';
 import { ExerciseDetails } from './screen/Workout/exercisedetails';
 import { ExerciseProvider } from '../Context/exerciseContext';
 import { Exercisescreen } from './screen/Workout/exercisescreen';
+import { Sensormenu } from './screen/Sensor/sensormenuscreen';
+import {Sensorscreen} from './screen/Sensor/sensorscreen';
 
 
 
@@ -52,8 +54,8 @@ return (
             <Stack.Screen options={{headerTitle: 'Test', headerShown: false}}name ='Menu' component={Menuscreen}/>
             <Stack.Screen options={{headerTitle: 'Test', headerShown: false}}name ='Recipescreen' component={Recipescreen}/>
             <Stack.Screen options={{headerTitle: 'Test', headerShown: false}}name ='Exercisescreen' component={Exercisescreen}/>
-        
-
+            <Stack.Screen options={{headerTitle: 'Test', headerShown: false}}name ='Sensormenu' component={Sensormenu}/>
+            <Stack.Screen options={{headerTitle: 'Test', headerShown: false}}name ='Sensorscreen' component={Sensorscreen}/>
             <Stack.Screen options={{headerTitle: 'Test', headerShown: false}}name ='Gymsc' component={Exerscreen}/>
 <Stack.Screen options={{headerTitle: 'Test', headerShown: false}}name ='BMI' component={Bmiscreen}/>
             

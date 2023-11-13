@@ -3,8 +3,6 @@ const express = require('express');
 const app = express();
 const bodyParser = require("body-parser")
 const mongoose = require('mongoose')
-require("./coach");
-const Coach = mongoose.model("coach")
 const { PrismaClient } = require('@prisma/client');
 const dotenv = require('dotenv');
 const session = require('express-session');
@@ -227,7 +225,7 @@ app.get('/exercises', async (req, res) => {
         }
       } else if (user.locked_until > new Date()) {
         // Account is locked
-        const minutesLeft = Math.ceil((user.locked_until - new Date()) / 60000);
+        const minutesLeft = Math.ceil((user.locked_until - new Date()) / 300);
         return res.status(403).json({
           errorMessage: `Your account is locked until ${user.locked_until.toLocaleString()}. Please try again in ${minutesLeft} Minutes.`,
         });

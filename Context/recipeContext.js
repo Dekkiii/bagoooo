@@ -16,7 +16,7 @@ const RecipeProvider = ({ children }) => {
   const getAllRecipe = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get('http:10.0.2.2:3000/recipes');
+      const { data } = await axios.get("https://serverrrr-3kbl.onrender.com/recipes");
       setLoading(false);
       setRecipes(data.recipes);
     } catch (error) {

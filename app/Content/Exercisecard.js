@@ -11,6 +11,7 @@ import YoutubeIframe from 'react-native-youtube-iframe';
 const ExerciseCard = ({exerciseinformations, exerciseId}) => {
     const navigation = useNavigation();
     const selectedExerciseInformation = exerciseinformations
+   
 
   //handle delete prompt
   return (

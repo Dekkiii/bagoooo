@@ -22,7 +22,7 @@ export const Registerscreen = ({navigation}) => {
             return;
           }
           setLoading(false);
-          const { data } = await axios.post("https://react-native-server-5j9t.onrender.com/registering", {
+          const { data } = await axios.post("https://serverrrr-3kbl.onrender.com/registering", {
             firstname,
             lastname,
             email,

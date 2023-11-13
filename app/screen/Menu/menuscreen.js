@@ -4,6 +4,7 @@ import { SafeAreaView,Text,View,ImageBackground,Image,ScrollView} from 'react-na
 import { Card, TextInput,Button,Title,Paragraph} from 'react-native-paper';
 import { Menustyle } from './menu.style';
 
+
 export const Menuscreen = ({navigation, route }) => {
   
     return(
@@ -39,7 +40,7 @@ export const Menuscreen = ({navigation, route }) => {
       <Paragraph>Pose Detection for different exercises</Paragraph>
     </Card.Content>
     <Card.Actions>
-    <Button onPress={() => navigation.navigate('Sensorscreen')}>Go</Button>
+    <Button onPress={() => navigation.navigate('Sensormenu')}>Go</Button>
     </Card.Actions>
     </Card>
 

@@ -5,10 +5,12 @@ import { useNavigation } from "@react-navigation/native";
 import { RecipeContext } from "../../Context/recipeContext";
 import { Menustyle } from "../screen/Recipe/menu.style";
 import { Card, TextInput,Button,Title,Paragraph} from 'react-native-paper';
-const RecipeCard = ({recipeinformations, recipeId}) => {
+const RecipeCard = ({nutrition, recipeinformations, recipeId}) => {
     const [recipes] = useContext(RecipeContext)
     const navigation = useNavigation();
     const selectedrecipeinformation = recipeinformations
+    const selectednutrition = nutrition
+    
 
   //handle delete prompt
   return (
@@ -33,7 +35,7 @@ const RecipeCard = ({recipeinformations, recipeId}) => {
         <Title style={{ textAlign: 'center' }}>Steps</Title>
         <Paragraph> {selectedrecipeinformation.steps}</Paragraph>
         <Title style={{ textAlign: 'center' }}>Nutrition</Title>
-        <Paragraph> {selectedrecipeinformation.nutrition}</Paragraph>
+        <Paragraph> {selectednutrition.calories}</Paragraph>
         <Paragraph> {recipeId}</Paragraph>
       
       </>
