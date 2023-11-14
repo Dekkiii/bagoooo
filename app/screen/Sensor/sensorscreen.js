@@ -1,69 +1,63 @@
-// import React, { useRef, useEffect } from 'react';
-// import { View, StyleSheet } from 'react-native';
-// import { RNCamera } from 'react-native-camera';
-// import * as posenet from '@tensorflow-models/posenet';
-
-// export const Sensorscreen = ({cameraRef, canvasRef }) => {
-  
-//   return (
-//     <View style={styles.container}>
-//       <RNCamera
-//         style={{ flex: 1, alignItems: 'center' }}
-//         ref={ref => {
-//           ref={cameraRef}
-//         }}
-//       />
-//     </View>
-//   )
-// }
-
-// const styles = StyleSheet.create({
-// container: {
-//   flex: 1,
-//   flexDirection: 'column',
-//   backgroundColor: 'black'
-// }
-// })
-
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import HumanPose from 'react-native-human-pose';
-import { View, Text, StyleSheet } from 'react-native';
+
+const angleThreshold = 120; // Adjust this threshold as needed
 
 export const Sensorscreen = () => {
   const [noOfSquats, setNoOfSquats] = useState(0);
-  const [hasSit, setHasSit] = useState(false);
-  const [hasStand, setHasStand] = useState(false);
+  const [isCounting, setIsCounting] = useState(false);
+
+  const calculateAngle = (joint1, joint2, joint3) => {
+    const radians = Math.atan2(joint3.y - joint2.y, joint3.x - joint2.x) - Math.atan2(joint1.y - joint2.y, joint1.x - joint2.x);
+    let angle = Math.abs((radians * 180.0) / Math.PI);
+
+    // Ensure angle is within 0 to 360 degrees
+    if (angle > 180) {
+      angle = 360 - angle;
+    }
+
+    return angle;
+  };
 
   const onPoseDetected = (pose) => {
-    console.log('leftHip', pose[0]?.pose?.leftHip?.y);
-    console.log('leftAnkle', pose[0]?.pose?.leftAnkle?.y);
-    if (
-      pose[0]?.pose?.leftHip?.confidence > 0.4 &&
-      pose[0]?.pose?.leftAnkle?.confidence > 0.4
-    ) {
-      if (
-        Math.abs(pose[0]?.pose?.leftHip?.y - pose[0]?.pose?.leftAnkle?.y) < 500
-      ) {
-        setHasSit(true);
-        setHasStand(false);
-      }
-      if (hasSit) {
-        if (
-          Math.abs(pose[0]?.pose?.leftHip?.y - pose[0]?.pose?.leftAnkle?.y) > 500
-        ) {
-          setHasStand(true);
-          setHasSit(false);
-        }
-      }
+    if (!isCounting) {
+      return;
+    }
+
+    const leftHip = pose[0]?.pose?.leftHip;
+    const leftKnee = pose[0]?.pose?.leftKnee;
+    const leftAnkle = pose[0]?.pose?.leftAnkle;
+
+    if (leftHip && leftKnee && leftAnkle) {
+      const hipKneeAnkleAngle = calculateAngle(leftHip, leftKnee, leftAnkle);
+
+      // Logic to determine squat position
+      // ...
+
+      // You might want to update the logic here based on your requirements
     }
   };
 
   useEffect(() => {
-    setNoOfSquats(hasStand ? noOfSquats + 1 : noOfSquats);
-  }, [hasStand]);
+    // Update the logic here based on your requirements
+    // ...
+
+    // For now, I'm incrementing the count on each pose detection
+    setNoOfSquats((prevCount) => prevCount + 1);
+  }, [isCounting]);
+
+  const handleToggle = () => {
+    setIsCounting((prevIsCounting) => !prevIsCounting);
+    setNoOfSquats(0); // Reset count when toggling
+  };
 
   return (
     <View style={{ flex: 1 }}>
+      <TouchableOpacity style={styles.button} onPress={handleToggle}>
+        <Text>{isCounting ? 'Stop' : 'Start'}</Text>
+      </TouchableOpacity>
+
       <Text>Human Pose</Text>
       <HumanPose
         height={500}
@@ -75,6 +69,7 @@ export const Sensorscreen = () => {
         color={'255, 0, 0'}
         onPoseDetected={onPoseDetected}
       />
+
       <Text
         style={{
           position: 'absolute',
@@ -92,5 +87,15 @@ export const Sensorscreen = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  button: {
+    padding: 10,
+    backgroundColor: 'lightblue',
+    borderRadius: 5,
+    marginVertical: 10,
+    alignSelf: 'center',
+  },
+});
 
 export default Sensorscreen;

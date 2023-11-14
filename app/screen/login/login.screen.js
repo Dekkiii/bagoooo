@@ -35,6 +35,7 @@ export const Loginscreen = ({navigation}) => {
               
               setState(data)
               await AsyncStorage.setItem("@auth", JSON.stringify(data));
+              console.log('Stored userId:', data.userId);
               alert(data && data.message);
               navigation.navigate('Home')
               console.log("Login Data ===>", (username, password))
