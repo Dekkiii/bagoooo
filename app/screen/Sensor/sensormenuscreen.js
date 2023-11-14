@@ -40,7 +40,9 @@ export const Sensormenu = ({ navigation, route }) => {
               <Card
                 TouchableOpacity
                 onPress={() =>
-                  navigation.navigate('Sensorscreen'
+                  navigation.navigate(exercise.exercise === 'Squat' ? 'Squatsensor' :
+                  exercise.exercise === 'Dumbell Curls' ? 'Dumbellsensor' :
+                  'Squatsensor'
                    )
                 }
                 style={Menustyle.card1}

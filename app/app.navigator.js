@@ -29,8 +29,9 @@ import { ExerciseDetails } from './screen/Workout/exercisedetails';
 import { ExerciseProvider } from '../Context/exerciseContext';
 import { Exercisescreen } from './screen/Workout/exercisescreen';
 import { Sensormenu } from './screen/Sensor/sensormenuscreen';
-import {Sensorscreen} from './screen/Sensor/sensorscreen';
+import {Squatsensor} from './screen/Sensor/squatsensor';
 import {SplashScreen} from './Splashscreen';
+import {Dumbellsensor} from './screen/Sensor/dumbellsensor';
 
 
 
@@ -55,6 +56,11 @@ export const AppNavigator = ({ navigation }) => {
         <RecipeProvider>
           <ExerciseProvider>
             <Stack.Navigator>
+            <Stack.Screen
+                options={{ headerTitle: 'Test', headerShown: false }}
+                name="Menu"
+                component={Menuscreen}
+              />
               <Stack.Screen
                 options={{ headerTitle: 'Test', headerShown: false }}
                 name="Login"
@@ -97,11 +103,6 @@ export const AppNavigator = ({ navigation }) => {
               />
               <Stack.Screen
                 options={{ headerTitle: 'Test', headerShown: false }}
-                name="Menu"
-                component={Menuscreen}
-              />
-              <Stack.Screen
-                options={{ headerTitle: 'Test', headerShown: false }}
                 name="Recipescreen"
                 component={Recipescreen}
               />
@@ -117,8 +118,13 @@ export const AppNavigator = ({ navigation }) => {
               />
               <Stack.Screen
                 options={{ headerTitle: 'Test', headerShown: false }}
-                name="Sensorscreen"
-                component={Sensorscreen}
+                name="Squatsensor"
+                component={Squatsensor}
+              />
+              <Stack.Screen
+                options={{ headerTitle: 'Test', headerShown: false }}
+                name="Dumbellsensor"
+                component={Dumbellsensor}
               />
               <Stack.Screen
                 options={{ headerTitle: 'Test', headerShown: false }}
