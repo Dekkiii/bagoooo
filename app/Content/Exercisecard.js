@@ -18,10 +18,6 @@ const ExerciseCard = ({exerciseinformations, exerciseId}) => {
     <SafeAreaView style={Menustyle.content}>
     <View>
     <Card >
-       <Card.Actions  style={Menustyle.card}>
-       <Image style={{width:35,height:35,marginRight: 5}}  source={require('./asset/blacklogo.png')}></Image>
-       <Button onPress={() => navigation.navigate('Exercisescreen')}>Back</Button>     
-       </Card.Actions>
        </Card>
        <ScrollView>
    <View>

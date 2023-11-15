@@ -10,16 +10,6 @@ export const Menuscreen = ({navigation, route }) => {
     return(
 <SafeAreaView style={Menustyle.content}>
     <View>
-
-    <Card >
-       <Card.Actions  style={Menustyle.card}>
-       <Image style={{width:35,height:35,marginRight: 5}}  source={require('./asset/blacklogo.png')}></Image>
-       <Button onPress={() => navigation.navigate('Menu')}>Menu</Button>
-       <Button onPress={() => navigation.navigate('Home')}>Home</Button>
-       <Button onPress={() => navigation.navigate('About')}> About</Button>
-       <Button onPress={() => navigation.navigate('Contact')}>Contact</Button>
-    </Card.Actions>
-    </Card>
    
    <ScrollView>
     <Card style={Menustyle.card1}>
