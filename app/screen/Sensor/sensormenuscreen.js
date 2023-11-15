@@ -27,7 +27,11 @@ export const Sensormenu = ({ navigation, route }) => {
                 onPress={() =>
                   navigation.navigate(exercise.exercise === 'Squat' ? 'Squatsensor' :
                   exercise.exercise === 'Dumbell Curls' ? 'Dumbellsensor' :
+<<<<<<< HEAD
                   'Sensorscreen'
+=======
+                  'Squatsensor'
+>>>>>>> 961f2694d40c62638f52e20d1b1a1755c2200892
                    )
                 }
                 style={Menustyle.card1}

@@ -22,6 +22,9 @@ import { Sensormenu } from './screen/Sensor/sensormenuscreen';
 import {Sensorscreen} from './screen/Sensor/sensorscreen';
 import {ProfileScreen} from './screen/Profile/ProfileScreen';
 import SplashScreen from './Splashscreen';
+import {Squatsensor} from './screen/Sensor/squatsensor';
+import {SplashScreen} from './Splashscreen';
+import {Dumbellsensor} from './screen/Sensor/dumbellsensor';
 
 
 
@@ -46,11 +49,22 @@ export const AppNavigator = ({ navigation }) => {
         <RecipeProvider>
           <ExerciseProvider>
             <Stack.Navigator>
-            <Stack.Screen
+              <Stack.Screen
                 options={{ headerTitle: 'Test', headerShown: false }}
-                name="Splashscreen"
-                component={SplashScreen}
+                name="Sensormenu"
+                component={Sensormenu}
               />
+              <Stack.Screen
+                options={{ headerTitle: 'Test', headerShown: false }}
+                name="Squatsensor"
+                component={Squatsensor}
+              />
+              <Stack.Screen
+                options={{ headerTitle: 'Test', headerShown: false }}
+                name="Dumbellsensor"
+                component={Dumbellsensor}
+              />
+                          <Stack.Screen options={{headerTitle: 'Test', headerShown: false}}name ='Splashscreen' component={SplashScreen}/>
               <Stack.Screen options={{headerTitle: 'Test', headerShown: false}} name="Login" component={Loginscreen} />
         <Stack.Screen options={{headerTitle: 'Test', headerShown: false}} name="Register" component={Registerscreen} />
             <Stack.Screen options={{headerTitle: 'Information', headerShown: true}} name ='Information' component={Informationscreen}/>
